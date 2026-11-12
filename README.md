@@ -10,10 +10,13 @@ Reducing subscription revenue loss for **StreamTH**, a fictional Thai streaming 
 python -m venv .venv && source .venv/bin/activate
 pip install -r requirements.txt
 python src/generate_data.py      # ~20 s, writes data/raw/*.csv (seed 42)
-pytest -q                        # data-quality + pattern-recovery tests
+python src/run_sql.py            # SQL pipeline -> data/processed/
+python src/plot_retention.py     # charts -> reports/figures/
+pytest -q                        # data-quality, pattern-recovery and SQL checks
 ```
 
 ## Docs
+- [Cohort retention findings](docs/cohort_retention.md)
 - [Data dictionary](docs/data_dictionary.md)
 - [Simulation assumptions](docs/simulation_assumptions.md)
 - [Competitor pain points from Thai app reviews](docs/competitive_painpoints.md)
@@ -21,7 +24,7 @@ pytest -q                        # data-quality + pattern-recovery tests
 ## Roadmap
 - [x] Synthetic subscription dataset + data-quality tests
 - [x] Competitor pain points from Thai app reviews
-- [ ] SQL cohort retention
+- [x] SQL cohort retention
 - [ ] Survival analysis
 - [ ] Behavioural drivers
 - [ ] Early warning system
