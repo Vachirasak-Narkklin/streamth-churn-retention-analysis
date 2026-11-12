@@ -1,0 +1,15 @@
+dimension,segment,n,median_months,survival_m3,survival_m6,survival_m12
+overall,all,49956,8.0,0.6487,0.5347,0.4194
+promo,full price,35622,9.0,0.6764,0.5543,0.4338
+promo,promo,14334,6.0,0.5799,0.4861,0.3836
+activated,activated,19122,13.0,0.7527,0.6569,0.5263
+activated,not activated,30834,5.0,0.5845,0.4593,0.3534
+channel,organic,15018,9.0,0.6629,0.5453,0.4287
+channel,referral,5963,9.0,0.6684,0.5611,0.4436
+channel,search,7496,8.0,0.6363,0.529,0.4147
+channel,social_ads,12495,6.0,0.6089,0.4986,0.3893
+channel,telco_bundle,8984,9.0,0.6778,0.5546,0.4337
+plan,P1,17118,5.0,0.5729,0.4401,0.304
+plan,P2,17745,6.0,0.6087,0.4791,0.3536
+plan,P3,9441,8.0,0.652,0.5334,0.4078
+plan,P4,5652,inf,1.0,1.0,1.0

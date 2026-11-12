@@ -1,0 +1,4 @@
+covariate,hazard_ratio_single,test_statistic,p
+activated,0.5754,13.2935,0.0003
+basic,1.2208,1.1149,0.291
+promo,1.2877,95.1297,0.0

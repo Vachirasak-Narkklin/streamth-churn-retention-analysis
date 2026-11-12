@@ -12,11 +12,13 @@ pip install -r requirements.txt
 python src/generate_data.py      # ~20 s, writes data/raw/*.csv (seed 42)
 python src/run_sql.py            # SQL pipeline -> data/processed/
 python src/plot_retention.py     # charts -> reports/figures/
+python src/survival.py           # Kaplan-Meier + Cox models
 pytest -q                        # data-quality, pattern-recovery and SQL checks
 ```
 
 ## Docs
 - [Cohort retention findings](docs/cohort_retention.md)
+- [Survival analysis](docs/survival_analysis.md)
 - [Data dictionary](docs/data_dictionary.md)
 - [Simulation assumptions](docs/simulation_assumptions.md)
 - [Competitor pain points from Thai app reviews](docs/competitive_painpoints.md)
@@ -25,7 +27,7 @@ pytest -q                        # data-quality, pattern-recovery and SQL checks
 - [x] Synthetic subscription dataset + data-quality tests
 - [x] Competitor pain points from Thai app reviews
 - [x] SQL cohort retention
-- [ ] Survival analysis
+- [x] Survival analysis
 - [ ] Behavioural drivers
 - [ ] Early warning system
 - [ ] Intervention plan & ROI
