@@ -1,0 +1,13 @@
+# Generated data is reproducible from src/generate_data.py (seed 42) and too large for git
+data/raw/*.csv
+data/processed/*
+data/simulation/*
+!data/**/.gitkeep
+
+__pycache__/
+.pytest_cache/
+.ipynb_checkpoints/
+.venv/
+.DS_Store
+CLAUDE.md
+data/external/*.csv
