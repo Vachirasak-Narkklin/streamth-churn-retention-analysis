@@ -446,6 +446,31 @@ def build_tables(users, titles, sink, rel_day, pop_p):
             "exit_survey": survey}, truth
 
 
+def add_shared_account_reason(tables: dict) -> None:
+    """Pattern 9: some cancellers leave to join a cheaper shared account.
+
+    Applied after the main simulation with its OWN random stream, so every
+    other table stays identical. Price-sensitive customers (Basic plan, first
+    subscription bought on promo, younger) are more likely to give this reason.
+    Technical issues and finished-show answers are left untouched.
+    """
+    r = np.random.default_rng(SEED + 9)
+    sv, subs, users = tables["exit_survey"], tables["subscriptions"], tables["users"]
+    first = subs.sort_values("start_date").groupby("user_id").sub_id.first()
+    d = sv.merge(subs[["sub_id", "plan_id"]], on="sub_id").merge(
+        users[["user_id", "acquired_with_promo", "age_band"]], on="user_id")
+    p = (0.07
+         * np.where(d.plan_id == "P1", 2.0, np.where(d.plan_id == "P3", 0.6, 1.0))
+         * np.where(d.acquired_with_promo & d.sub_id.isin(first.values), 1.6, 1.0)
+         * d.age_band.map({"18-24": 1.8, "25-34": 1.3, "35-44": 1.0, "45-54": 0.6, "55+": 0.4}).to_numpy())
+    eligible = ~d.reason.isin(["technical_issues", "finished_show"]).to_numpy()
+    hit = eligible & (r.random(len(d)) < p)
+    where = r.choice(["StreamTH shared account", "Netflix", "iQIYI/WeTV", "Other"],
+                     len(d), p=[.45, .25, .20, .10])
+    sv.loc[hit, "reason"] = "joined_shared_account"
+    sv.loc[hit, "switched_to"] = where[hit]
+
+
 def main():
     t0 = time.time()
     RAW.mkdir(parents=True, exist_ok=True)
@@ -455,6 +480,7 @@ def main():
     print(f"Simulating {N_USERS:,} users …")
     sink, rel_day, pop_p = simulate(users, titles)
     tables, truth = build_tables(users, titles, sink, rel_day, pop_p)
+    add_shared_account_reason(tables)
     for name, df in tables.items():
         df.to_csv(RAW / f"{name}.csv", index=False)
         print(f"  {name:<18} {len(df):>10,} rows")

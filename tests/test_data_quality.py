@@ -111,7 +111,8 @@ def test_domains(db):
     assert one(db, "SELECT COUNT(*) FROM viewing_sessions WHERE minutes NOT BETWEEN 1 AND 400") == 0
     assert one(db, "SELECT COUNT(*) FROM titles WHERE origin NOT IN ('TH','KR','CN','US','JP')") == 0
     assert one(db, """SELECT COUNT(*) FROM exit_survey WHERE switched_to NOT IN
-                      ('Netflix','Prime Video','Disney+','iQIYI/WeTV','Viu','None','Other')""") == 0
+                      ('Netflix','Prime Video','Disney+','iQIYI/WeTV','Viu','None','Other',
+                       'StreamTH shared account')""") == 0
 
 
 def test_survey_only_for_voluntary_cancellations(db):
@@ -258,3 +259,12 @@ def test_p6_binge_and_leave(db):
                AVG(CASE WHEN grp = 'base'  THEN (top_share >= 0.5)::INT END)
         FROM per_user WHERE total >= 4""").fetchone()
     assert churn_share >= 2 * base_share
+
+
+def test_p9_shared_account_reason_skews_price_sensitive(db):
+    r = dict(db.execute("""
+        SELECT s.plan_id, AVG(CASE WHEN e.reason = 'joined_shared_account' THEN 1.0 ELSE 0 END)
+        FROM exit_survey e JOIN subscriptions s USING (sub_id) GROUP BY 1""").fetchall())
+    assert r["P1"] >= 1.8 * r["P2"] and r["P3"] < r["P2"]
+    share = one(db, "SELECT AVG(CASE WHEN reason = 'joined_shared_account' THEN 1.0 ELSE 0 END) FROM exit_survey")
+    assert 0.08 <= share <= 0.16

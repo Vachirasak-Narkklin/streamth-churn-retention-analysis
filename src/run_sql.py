@@ -20,7 +20,7 @@ SQL = ROOT / "sql"
 RAW_TABLES = ["users", "plans", "subscriptions", "payments", "viewing_sessions",
               "titles", "support_tickets", "exit_survey"]
 EXPORT = ["cohort_base", "retention_matrix", "retention_drop", "retention_curve",
-          "segment_retention", "subscription_activity"]
+          "segment_retention", "subscription_activity", "renewal_snapshots"]
 
 
 def connect() -> duckdb.DuckDBPyConnection:
