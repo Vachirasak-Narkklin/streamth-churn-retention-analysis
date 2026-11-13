@@ -1,0 +1,12 @@
+dimension,segment,answers,shared_share
+Age,18-24,3870,0.1731
+Age,25-34,5542,0.1241
+Age,35-44,3523,0.0976
+Age,45-54,1896,0.058
+Age,55+,1239,0.0347
+Plan,Annual,523,0.0937
+Plan,Basic with ads,6220,0.1756
+Plan,Premium,3024,0.0556
+Plan,Standard,6303,0.0866
+Signup,Full price / win-back,11292,0.0973
+Signup,Promo signup,4778,0.1582

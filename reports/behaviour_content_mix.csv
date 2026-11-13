@@ -1,0 +1,18 @@
+dim,value,share_churned,share_renewed,diff_pp
+genre,drama,0.1703,0.17,0.0365
+genre,romance,0.1486,0.1511,-0.2541
+genre,variety,0.1275,0.1312,-0.3681
+genre,action,0.1003,0.0976,0.2691
+genre,horror,0.0996,0.0975,0.2116
+genre,comedy,0.0934,0.0931,0.0301
+genre,thriller,0.0879,0.0909,-0.2983
+genre,anime,0.0821,0.0822,-0.0175
+genre,fantasy,0.0491,0.0461,0.2981
+genre,documentary,0.0411,0.0402,0.0926
+origin,US,0.2704,0.2725,-0.2066
+origin,KR,0.2512,0.2478,0.337
+origin,TH,0.2361,0.2387,-0.2546
+origin,CN,0.1744,0.1701,0.4279
+origin,JP,0.0679,0.0709,-0.3036
+original,licensed,0.9111,0.9126,-0.1529
+original,StreamTH original,0.0889,0.0874,0.1529

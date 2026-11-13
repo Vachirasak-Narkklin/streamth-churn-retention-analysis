@@ -88,5 +88,5 @@ erDiagram
 | user_id | text FK → users | |
 | sub_id | text FK → subscriptions | *(added beyond spec — a user may cancel twice after win-back)* |
 | cancel_date | date | Date the cancel request was made (≤ end_date) |
-| reason | text | price, not_enough_content, not_using_enough, switching_service, finished_show, technical_issues, other |
-| switched_to | text | Netflix, Prime Video, Disney+, iQIYI/WeTV, Viu, None, Other |
+| reason | text | price, not_enough_content, not_using_enough, switching_service, joined_shared_account, finished_show, technical_issues, other |
+| switched_to | text | Netflix, Prime Video, Disney+, iQIYI/WeTV, Viu, StreamTH shared account, None, Other |

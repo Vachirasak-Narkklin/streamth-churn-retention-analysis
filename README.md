@@ -13,12 +13,14 @@ python src/generate_data.py      # ~20 s, writes data/raw/*.csv (seed 42)
 python src/run_sql.py            # SQL pipeline -> data/processed/
 python src/plot_retention.py     # charts -> reports/figures/
 python src/survival.py           # Kaplan-Meier + Cox models
+python src/behaviour.py          # behavioural drivers and warning signals
 pytest -q                        # data-quality, pattern-recovery and SQL checks
 ```
 
 ## Docs
 - [Cohort retention findings](docs/cohort_retention.md)
 - [Survival analysis](docs/survival_analysis.md)
+- [Behavioural drivers](docs/behavioural_drivers.md)
 - [Data dictionary](docs/data_dictionary.md)
 - [Simulation assumptions](docs/simulation_assumptions.md)
 - [Competitor pain points from Thai app reviews](docs/competitive_painpoints.md)
@@ -28,7 +30,7 @@ pytest -q                        # data-quality, pattern-recovery and SQL checks
 - [x] Competitor pain points from Thai app reviews
 - [x] SQL cohort retention
 - [x] Survival analysis
-- [ ] Behavioural drivers
+- [x] Behavioural drivers
 - [ ] Early warning system
 - [ ] Intervention plan & ROI
 - [ ] Leaky-bucket sizing

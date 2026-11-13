@@ -25,6 +25,7 @@ These effects were deliberately built into the simulation. The analysis phases m
 | 6 | Binge-and-leave | 12% of users binge one new series in period 1–3, then cancel at period end with 65% probability | Early churners ≥2× more likely to have one title ≥50% of recent sessions |
 | 7 | ~15% of churners win back within 6 months | 15% of churners resubscribe 20–180 days later (once) | Tested in 10–20% band |
 | 8 | Annual plans churn far less; involuntary ≈20% of churn | Annual renewal churn 22%; payment failure 2.2–3.6% per renewal, 35% recovered | Involuntary share **18.7%** of ended subscriptions |
+| 9 | Some cancellers leave for a cheaper shared account | After the main simulation, a separate random stream relabels exit answers: base 7%, × 2.0 Basic plan, × 1.6 promo first subscription, × 1.8 age 18–24 (× 0.4 age 55+). 45% of these join someone else's StreamTH account | 11.5% of exit answers; Basic-plan cancellers ≥ 1.8× Standard |
 
 ## Deliberate noise (so patterns are not perfectly clean)
 - Per-user random hazard multiplier (lognormal, σ = 0.3)
